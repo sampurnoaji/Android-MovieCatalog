@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DcExpertSubmit3</string>
+
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="title">Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="original_language">Original Language</string>
+    <string name="overview">Overview</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="content_description">This is content description for poster of the film</string>
+    <string name="popularity">Popularity</string>
+    <string name="change_language">Change Language</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

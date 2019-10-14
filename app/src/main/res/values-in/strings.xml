@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DcExpertSubmit3</string>
+
+    <string name="movies">Film</string>
+    <string name="tv_shows">Tayangan TV</string>
+    <string name="title">Judul</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="original_language">Bahasa Asli</string>
+    <string name="overview">Deskripsi</string>
+    <string name="vote_average">Voting Rata-rata</string>
+    <string name="content_description">Ini adalah deskripsi konten untuk poster film</string>
+    <string name="popularity">Popularitas</string>
+    <string name="change_language">Ganti Bahasa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

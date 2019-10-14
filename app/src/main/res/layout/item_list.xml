@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp">
+        <ImageView
+            android:id="@+id/list_poster"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            tools:src="@color/colorPrimaryDark"/>
+        <TextView
+            android:id="@+id/list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Walking Dead"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_toEndOf="@+id/list_poster"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/list_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="April 12, 2019"
+            android:textStyle="italic"
+            android:layout_toEndOf="@+id/list_poster"
+            android:layout_below="@+id/list_title"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/list_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/list_poster"
+            android:layout_below="@+id/list_date"
+            tools:text="What did the world look like as it was transforming into the horrifying apocalypse depicted in The Walking Dead? This spin off set in Los Angeles, following new characters as they face the beginning of the end of the world, will answer that question."
+            android:maxLines="4"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="3dp"/>
+</LinearLayout>
