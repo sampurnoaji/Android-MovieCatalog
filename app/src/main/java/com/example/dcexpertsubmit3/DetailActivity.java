@@ -1,14 +1,18 @@
 package com.example.dcexpertsubmit3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dcexpertsubmit3.model.Movie;
 import com.example.dcexpertsubmit3.model.Tvshow;
+
+import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_DATA = "extra_data";
@@ -18,6 +22,8 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         TextView title = findViewById(R.id.detail_title);
         TextView date = findViewById(R.id.detail_date);
@@ -53,5 +59,13 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

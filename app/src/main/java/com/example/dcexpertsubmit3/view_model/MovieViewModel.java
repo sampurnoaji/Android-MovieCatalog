@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.dcexpertsubmit3.BuildConfig;
 import com.example.dcexpertsubmit3.model.Movie;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,7 +26,7 @@ public class MovieViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Movie>> listMovie = new MutableLiveData<>();
 
     public void setMovie(){
-        String API_KEY = "959de899402215489c0c8210dd65d0e2";
+        String API_KEY = BuildConfig.TMBD_API_KEY;
         final ArrayList<Movie> listMovieItem = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "https://api.themoviedb.org/3/discover/movie?api_key="+ API_KEY +"&language=en-US";

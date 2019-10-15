@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.dcexpertsubmit3.BuildConfig;
 import com.example.dcexpertsubmit3.model.Tvshow;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,7 +26,7 @@ public class TvshowViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Tvshow>> listTvshow = new MutableLiveData<>();
 
     public void setTvshow(){
-        String API_KEY = "959de899402215489c0c8210dd65d0e2";
+        String API_KEY = BuildConfig.TMBD_API_KEY;
         final ArrayList<Tvshow> listTvshowItem = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "https://api.themoviedb.org/3/discover/tv?api_key="+ API_KEY +"&language=en-US";
