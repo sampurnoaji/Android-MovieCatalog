@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">DcExpertSubmit3</string>
+    <string name="app_name">DcSubmit3</string>
+
+    <string name="title_main">Home</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_favorite">Favorite</string>
 
     <string name="movies">Movies</string>
     <string name="tv_shows">TV Shows</string>
@@ -11,6 +15,16 @@
     <string name="content_description">This is content description for poster of the film</string>
     <string name="popularity">Popularity</string>
     <string name="change_language">Change Language</string>
+    <string name="favorite">Favorite</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="message_add_movie">Movie added to favorite</string>
+    <string name="message_add_movie_exist">Movie already exist in favorite</string>
+    <string name="message_add_tvshow">TV Show added to favorite</string>
+    <string name="message_add_tvshow_exist">TV Show already exist in favorite</string>
+    <string name="message_delete_movie">Movie deleted from favorite</string>
+    <string name="message_delete_tvshow">TV Show deleted from favorite</string>
+
+    <string name="delete">Delete Item</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setTitle(getString(R.string.title_main));
         setupTabLayout();
     }
 
@@ -47,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_bahasa) {
-            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(mIntent);
+            Intent intentBhs = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(intentBhs);
+        } else if (item.getItemId() == R.id.menu_favorite){
+            Intent intentFav = new Intent(MainActivity.this, FavoriteActivity.class);
+            startActivity(intentFav);
         }
         return super.onOptionsItemSelected(item);
     }

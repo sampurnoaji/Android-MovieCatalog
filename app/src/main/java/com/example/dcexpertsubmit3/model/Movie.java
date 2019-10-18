@@ -3,18 +3,23 @@ package com.example.dcexpertsubmit3.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * Dibuat oleh petersam
  */
+@Entity
 public class Movie implements Parcelable {
-    private int id;
-    private String title;
-    private String release_date;
-    private String overview;
-    private String poster_path;
-    private String original_language;
-    private double vote_average;
-    private double popularity;
+    @PrimaryKey(autoGenerate = false)       private int id;
+    @ColumnInfo(name = "title")             private String title;
+    @ColumnInfo(name = "release_date")      private String release_date;
+    @ColumnInfo(name = "overview")          private String overview;
+    @ColumnInfo(name = "poster_path")       private String poster_path;
+    @ColumnInfo(name = "original_language") private String original_language;
+    @ColumnInfo(name = "vote_average")      private double vote_average;
+    @ColumnInfo(name = "popularity")        private double popularity;
 
     public Movie() {
     }

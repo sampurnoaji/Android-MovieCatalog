@@ -2,27 +2,42 @@ package com.example.dcexpertsubmit3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.dcexpertsubmit3.database.FilmDatabase;
 import com.example.dcexpertsubmit3.model.Movie;
 import com.example.dcexpertsubmit3.model.Tvshow;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class DetailActivity extends AppCompatActivity {
+import static com.example.dcexpertsubmit3.database.AppController.database;
+
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_DATA = "extra_data";
     public static final String EXTRA_STRING = "extra_string";
+
+    private Movie movie;
+    private Tvshow tvshow;
+    
+    private ArrayList<Movie> listMovie = new ArrayList<>();
+    private ArrayList<Tvshow> listTvshow = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        setTitle(getString(R.string.title_detail));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         TextView title = findViewById(R.id.detail_title);
@@ -33,10 +48,13 @@ public class DetailActivity extends AppCompatActivity {
         TextView overview = findViewById(R.id.detail_overview);
         ImageView poster = findViewById(R.id.detail_poster);
 
+        FloatingActionButton fab = findViewById(R.id.fab_favorite);
+        fab.setOnClickListener(this);
+
         String string = getIntent().getStringExtra(EXTRA_STRING);
         if (string != null) {
             if (string.equals("movie")){
-                Movie movie = getIntent().getParcelableExtra(EXTRA_DATA);
+                movie = getIntent().getParcelableExtra(EXTRA_DATA);
                 if (movie != null) {
                     title.setText(movie.getTitle());
                     date.setText(movie.getRelease_date());
@@ -47,7 +65,7 @@ public class DetailActivity extends AppCompatActivity {
                     Glide.with(this).load(movie.getPoster_path()).into(poster);
                 }
             } else {
-                Tvshow tvshow = getIntent().getParcelableExtra(EXTRA_DATA);
+                tvshow = getIntent().getParcelableExtra(EXTRA_DATA);
                 if (tvshow != null){
                     title.setText(tvshow.getName());
                     date.setText(tvshow.getFirst_air_date());
@@ -67,5 +85,54 @@ public class DetailActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.fab_favorite){
+            Intent intent = new Intent(DetailActivity.this, FavoriteActivity.class);
+
+            if (movie != null){
+                if (listMovie.size() == 0){
+                    database.dao().insertFavMovie(movie);
+                    Toast.makeText(this, getString(R.string.message_add_movie), Toast.LENGTH_SHORT).show();
+                } else {
+                    for (int i = 0; i < listMovie.size(); i++) {
+                        if (movie.getId() == listMovie.get(i).getId()){
+                            Toast.makeText(this, getString(R.string.message_add_movie_exist), Toast.LENGTH_SHORT).show();
+                        } else {
+                            database.dao().insertFavMovie(movie);
+                            Toast.makeText(this, getString(R.string.message_add_movie), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+            else {
+                if (listTvshow.size() == 0){
+                    database.dao().insertFavTvshow(tvshow);
+                    Toast.makeText(this, R.string.message_add_tvshow, Toast.LENGTH_SHORT).show();
+                } else {
+                    for (int i = 0; i < listTvshow.size(); i++) {
+                        if (tvshow.getId() == listTvshow.get(i).getId()){
+                            Toast.makeText(this, getString(R.string.message_add_tvshow_exist), Toast.LENGTH_SHORT).show();
+                        } else {
+                            database.dao().insertFavTvshow(tvshow);
+                            Toast.makeText(this, R.string.message_add_tvshow, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                intent.putExtra(EXTRA_STRING, EXTRA_STRING);
+            }
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        database = Room.databaseBuilder(this, FilmDatabase.class, "film_database")
+                .allowMainThreadQueries()
+                .build();
+        listMovie = (ArrayList<Movie>) database.dao().getFavMovie();
     }
 }
