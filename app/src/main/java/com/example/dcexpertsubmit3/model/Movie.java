@@ -12,7 +12,9 @@ import androidx.room.PrimaryKey;
  */
 @Entity
 public class Movie implements Parcelable {
-    @PrimaryKey(autoGenerate = false)       private int id;
+    @PrimaryKey(autoGenerate = true)
+    public int pKey;
+    @ColumnInfo(name = "id")                private int id;
     @ColumnInfo(name = "title")             private String title;
     @ColumnInfo(name = "release_date")      private String release_date;
     @ColumnInfo(name = "overview")          private String overview;
@@ -24,28 +26,13 @@ public class Movie implements Parcelable {
     public Movie() {
     }
 
-    protected Movie(Parcel in) {
-        id = in.readInt();
-        title = in.readString();
-        release_date = in.readString();
-        overview = in.readString();
-        poster_path = in.readString();
-        original_language = in.readString();
-        vote_average = in.readDouble();
-        popularity = in.readDouble();
+    public int getpKey() {
+        return pKey;
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
+    public void setpKey(int pKey) {
+        this.pKey = pKey;
+    }
 
     public int getId() {
         return id;
@@ -111,6 +98,30 @@ public class Movie implements Parcelable {
         this.popularity = popularity;
     }
 
+    protected Movie(Parcel in) {
+        pKey = in.readInt();
+        id = in.readInt();
+        title = in.readString();
+        release_date = in.readString();
+        overview = in.readString();
+        poster_path = in.readString();
+        original_language = in.readString();
+        vote_average = in.readDouble();
+        popularity = in.readDouble();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,6 +129,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(pKey);
         parcel.writeInt(id);
         parcel.writeString(title);
         parcel.writeString(release_date);

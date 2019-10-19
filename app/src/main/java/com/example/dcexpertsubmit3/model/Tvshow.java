@@ -12,7 +12,9 @@ import androidx.room.PrimaryKey;
  */
 @Entity
 public class Tvshow implements Parcelable {
-    @PrimaryKey(autoGenerate = false)       private int id;
+    @PrimaryKey(autoGenerate = true)
+    public int pKey;
+    @ColumnInfo(name = "id")                private int id;
     @ColumnInfo(name = "name")              private String name;
     @ColumnInfo(name = "first_air_date")    private String first_air_date;
     @ColumnInfo(name = "overview")          private String overview;
@@ -24,28 +26,13 @@ public class Tvshow implements Parcelable {
     public Tvshow() {
     }
 
-    protected Tvshow(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        first_air_date = in.readString();
-        overview = in.readString();
-        poster_path = in.readString();
-        original_language = in.readString();
-        vote_average = in.readDouble();
-        popularity = in.readDouble();
+    public int getpKey() {
+        return pKey;
     }
 
-    public static final Creator<Tvshow> CREATOR = new Creator<Tvshow>() {
-        @Override
-        public Tvshow createFromParcel(Parcel in) {
-            return new Tvshow(in);
-        }
-
-        @Override
-        public Tvshow[] newArray(int size) {
-            return new Tvshow[size];
-        }
-    };
+    public void setpKey(int pKey) {
+        this.pKey = pKey;
+    }
 
     public int getId() {
         return id;
@@ -111,6 +98,30 @@ public class Tvshow implements Parcelable {
         this.popularity = popularity;
     }
 
+    protected Tvshow(Parcel in) {
+        pKey = in.readInt();
+        id = in.readInt();
+        name = in.readString();
+        first_air_date = in.readString();
+        overview = in.readString();
+        poster_path = in.readString();
+        original_language = in.readString();
+        vote_average = in.readDouble();
+        popularity = in.readDouble();
+    }
+
+    public static final Creator<Tvshow> CREATOR = new Creator<Tvshow>() {
+        @Override
+        public Tvshow createFromParcel(Parcel in) {
+            return new Tvshow(in);
+        }
+
+        @Override
+        public Tvshow[] newArray(int size) {
+            return new Tvshow[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,6 +129,7 @@ public class Tvshow implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(pKey);
         parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeString(first_air_date);
