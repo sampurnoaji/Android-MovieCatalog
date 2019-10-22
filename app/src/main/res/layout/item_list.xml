@@ -14,7 +14,8 @@
             android:id="@+id/list_poster"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            tools:src="@color/colorPrimaryDark"/>
+            tools:src="@color/colorPrimaryDark"
+            android:contentDescription="@string/content_description"/>
         <TextView
             android:id="@+id/list_title"
             android:layout_width="match_parent"

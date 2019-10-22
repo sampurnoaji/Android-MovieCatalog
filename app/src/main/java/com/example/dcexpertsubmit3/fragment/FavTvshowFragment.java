@@ -18,6 +18,7 @@ import com.example.dcexpertsubmit3.database.FilmDatabase;
 import com.example.dcexpertsubmit3.model.Tvshow;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.example.dcexpertsubmit3.database.AppController.database;
 
@@ -25,8 +26,6 @@ import static com.example.dcexpertsubmit3.database.AppController.database;
  * Dibuat oleh petersam
  */
 public class FavTvshowFragment extends Fragment {
-    private FavListAdapter adapter;
-    private ArrayList<Tvshow> list = new ArrayList<>();
 
     @Nullable
     @Override
@@ -39,13 +38,13 @@ public class FavTvshowFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = view.findViewById(R.id.rv);
 
-        database = Room.databaseBuilder(getContext(), FilmDatabase.class, "film_database")
+        database = Room.databaseBuilder(Objects.requireNonNull(getContext()), FilmDatabase.class, "film_database")
                 .allowMainThreadQueries()
                 .build();
-        list = (ArrayList<Tvshow>) database.dao().getFavTvshow();
+        ArrayList<Tvshow> list = (ArrayList<Tvshow>) database.dao().getFavTvshow();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new FavListAdapter(getContext(), null, list);
+        FavListAdapter adapter = new FavListAdapter(getContext(), null, list);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }

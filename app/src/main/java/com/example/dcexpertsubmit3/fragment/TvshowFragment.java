@@ -19,7 +19,6 @@ import android.widget.ProgressBar;
 import com.example.dcexpertsubmit3.R;
 import com.example.dcexpertsubmit3.adapter.ItemListAdapter;
 import com.example.dcexpertsubmit3.model.Tvshow;
-import com.example.dcexpertsubmit3.view_model.MovieViewModel;
 import com.example.dcexpertsubmit3.view_model.TvshowViewModel;
 
 import java.util.ArrayList;
