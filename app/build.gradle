@@ -11,7 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        it.buildConfigField("String", "TMBD_API_KEY", '"959de899402215489c0c8210dd65d0e2"');
+        it.buildConfigField("String", "TMBD_API_KEY", '"959de899402215489c0c8210dd65d0e2"')
     }
     buildTypes {
         release {
@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'androidx.room:room-runtime:2.2.0'
     annotationProcessor 'androidx.room:room-compiler:2.2.0'

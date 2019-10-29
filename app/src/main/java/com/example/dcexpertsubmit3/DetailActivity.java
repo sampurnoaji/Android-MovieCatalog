@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -97,8 +98,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 boolean flag = true;
                 if (listMovie.size() == 0) {
                     database.dao().insertFavMovie(movie);
+                    sendBroadcast(new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE));
                     Toast.makeText(this, getString(R.string.message_add_movie), Toast.LENGTH_SHORT).show();
                     Log.e("tag 1:", "MOVIE INSERT");
+
+
                 } else {
                     for (int i = 0; i < listMovie.size(); i++) {
                         if (movie.getId() == listMovie.get(i).getId()) {
@@ -110,6 +114,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     if (flag){
                         database.dao().insertFavMovie(movie);
+                        sendBroadcast(new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE));
                         Toast.makeText(this, getString(R.string.message_add_movie), Toast.LENGTH_SHORT).show();
                         Log.e("tag 3:", "MOVIE INSERT");
                     }

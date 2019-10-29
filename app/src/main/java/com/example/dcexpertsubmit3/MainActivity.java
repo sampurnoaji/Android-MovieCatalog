@@ -2,14 +2,18 @@ package com.example.dcexpertsubmit3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.dcexpertsubmit3.adapter.ViewPagerAdapter;
 import com.example.dcexpertsubmit3.fragment.MovieFragment;
@@ -46,13 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_bahasa) {
-            Intent intentBhs = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(intentBhs);
-        } else if (item.getItemId() == R.id.menu_favorite){
-            Intent intentFav = new Intent(MainActivity.this, FavoriteActivity.class);
-            startActivity(intentFav);
+        int id = item.getItemId();
+        switch (id){
+            case R.id.menu_bahasa:
+                Intent intentBhs = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(intentBhs);
+                break;
+            case R.id.menu_favorite:
+                Intent intentFav = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intentFav);
+                break;
+            case R.id.menu_alarm:
+                Intent intentAlarm = new Intent(MainActivity.this, SetAlarmActivity.class);
+                startActivity(intentAlarm);
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

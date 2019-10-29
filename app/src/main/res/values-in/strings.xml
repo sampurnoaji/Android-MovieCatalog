@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DcSubmit3</string>
+    <string name="app_name">Movie Catalog</string>
 
     <string name="title_main">Beranda</string>
     <string name="title_detail">Rincian</string>
@@ -27,4 +27,18 @@
     <string name="delete">Hapus Item</string>
     <string name="yes">Ya</string>
     <string name="cancel">Batal</string>
+    <string name="search">Cari</string>
+
+    <string name="search_hint">Cari di sini</string>
+    <string name="no_result">Hasil tidak ditemukan</string>
+
+    <string name="internet_problem">Gangguan koneksi internet</string>
+
+    <string name="message_daily">Lihat Apa Yang Baru</string>
+    <string name="message_release">Hari ini film yang rilis berjumlah </string>
+    <string name="alarm_on">Alarm diaktifkan</string>
+    <string name="alarm_off">Alarm dinonaktifkan</string>
+    <string name="alarm">Alarm</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="release_reminder">Release Reminder</string>
 </resources>

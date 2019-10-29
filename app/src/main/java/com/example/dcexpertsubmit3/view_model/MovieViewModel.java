@@ -1,12 +1,15 @@
 package com.example.dcexpertsubmit3.view_model;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.dcexpertsubmit3.BuildConfig;
+import com.example.dcexpertsubmit3.R;
 import com.example.dcexpertsubmit3.model.Movie;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,12 +28,11 @@ import cz.msebera.android.httpclient.Header;
 public class MovieViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Movie>> listMovie = new MutableLiveData<>();
 
-    public void setMovie(){
-        String API_KEY = BuildConfig.TMBD_API_KEY;
+    public void setMovie(String url){
         final ArrayList<Movie> listMovieItem = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.themoviedb.org/3/discover/movie?api_key="+ API_KEY +"&language=en-US";
 
+        client.setTimeout(5000);
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

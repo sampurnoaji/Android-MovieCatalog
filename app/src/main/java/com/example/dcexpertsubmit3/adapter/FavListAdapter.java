@@ -2,6 +2,7 @@ package com.example.dcexpertsubmit3.adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -88,7 +89,7 @@ public class FavListAdapter extends RecyclerView.Adapter<FavListAdapter.MyViewHo
         }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView poster;
         TextView title, date, overview;
 
@@ -111,6 +112,7 @@ public class FavListAdapter extends RecyclerView.Adapter<FavListAdapter.MyViewHo
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (listMovie != null) {
                                     database.dao().deleteFavMovie(movie.getId());
+                                    context.sendBroadcast(new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE));
                                     Toast.makeText(context, context.getString(R.string.message_delete_movie), Toast.LENGTH_SHORT).show();
                                     context.startActivity(new Intent(context, FavoriteActivity.class));
                                     ((Activity) context).finish();

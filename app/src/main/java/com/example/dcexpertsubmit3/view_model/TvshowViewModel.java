@@ -25,11 +25,9 @@ import cz.msebera.android.httpclient.Header;
 public class TvshowViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Tvshow>> listTvshow = new MutableLiveData<>();
 
-    public void setTvshow(){
-        String API_KEY = BuildConfig.TMBD_API_KEY;
+    public void setTvshow(String url){
         final ArrayList<Tvshow> listTvshowItem = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://api.themoviedb.org/3/discover/tv?api_key="+ API_KEY +"&language=en-US";
 
         client.get(url, new AsyncHttpResponseHandler() {
             @Override

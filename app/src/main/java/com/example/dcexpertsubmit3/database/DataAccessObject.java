@@ -1,5 +1,7 @@
 package com.example.dcexpertsubmit3.database;
 
+import android.database.Cursor;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -17,6 +19,8 @@ public interface DataAccessObject {
     @Insert void insertFavMovie(Movie movie);
     @Query("SELECT * FROM Movie") List<Movie> getFavMovie();
     @Query("DELETE FROM Movie WHERE id LIKE :id") void deleteFavMovie(int id);
+    @Query("SELECT * FROM Movie") Cursor selectAll();
+    @Query("SELECT * FROM Movie WHERE id = :id") Cursor selectById(long id);
 
     @Insert void insertFavTvshow(Tvshow tvshow);
     @Query("SELECT * FROM Tvshow") List<Tvshow> getFavTvshow();

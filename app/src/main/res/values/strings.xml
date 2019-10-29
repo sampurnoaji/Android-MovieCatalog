@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DcSubmit3</string>
+    <string name="app_name">Movie Catalog</string>
 
     <string name="title_main">Home</string>
     <string name="title_detail">Detail</string>
@@ -27,4 +27,18 @@
     <string name="delete">Delete Item</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+
+    <string name="search_hint">Search here</string>
+    <string name="no_result">No result found</string>
+
+    <string name="internet_problem">Internet connection problem</string>
+
+    <string name="message_daily">See What\'s New</string>
+    <string name="message_release">New release movies today is </string>
+    <string name="alarm_on">Alarm activated</string>
+    <string name="alarm_off">Alarm not activated</string>
+    <string name="alarm">Alarm</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="release_reminder">Release Reminder</string>
 </resources>

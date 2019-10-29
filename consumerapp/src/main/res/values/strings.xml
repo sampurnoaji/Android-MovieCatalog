@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ConsumerApp</string>
+
+    <string name="content_description">This is content description for poster of the film</string>
+</resources>
