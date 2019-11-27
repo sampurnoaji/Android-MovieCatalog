@@ -3,15 +3,14 @@ package com.example.dcexpertsubmit3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.dcexpertsubmit3.reminder.AlarmReceiver;
+import com.example.dcexpertsubmit3.reminder.NotificationReceiver;
 
 public class SetAlarmActivity extends AppCompatActivity {
+    private NotificationReceiver notificationReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +20,17 @@ public class SetAlarmActivity extends AppCompatActivity {
 
         Switch daily = findViewById(R.id.switch_daily);
         Switch release = findViewById(R.id.switch_release);
-        
-        final AlarmReceiver alarmReceiver = new AlarmReceiver();
+
+        notificationReceiver = new NotificationReceiver(this);
 
         daily.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    alarmReceiver.setRepeatingAlarm(getApplicationContext());
+                    notificationReceiver.setDailyReminder();
                     Toast.makeText(getApplicationContext(), getString(R.string.alarm_on), Toast.LENGTH_SHORT).show();
                 } else {
-                    alarmReceiver.cancelAlarm(getApplicationContext(), AlarmReceiver.TYPE_REPEATING);
+                    notificationReceiver.cancelDailyReminder(getApplicationContext());
                     Toast.makeText(getApplicationContext(), getString(R.string.alarm_off), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -41,10 +40,10 @@ public class SetAlarmActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    alarmReceiver.setReleaseAlarm(getApplicationContext());
+                    notificationReceiver.setReleaseTodayReminder();
                     Toast.makeText(getApplicationContext(), getString(R.string.alarm_on), Toast.LENGTH_SHORT).show();
                 } else {
-                    alarmReceiver.cancelAlarm(getApplicationContext(), AlarmReceiver.TYPE_RELEASE);
+                    notificationReceiver.cancelReleaseToday(getApplicationContext());
                     Toast.makeText(getApplicationContext(), getString(R.string.alarm_off), Toast.LENGTH_SHORT).show();
                 }
             }

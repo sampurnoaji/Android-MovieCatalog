@@ -35,7 +35,7 @@
     <string name="internet_problem">Internet connection problem</string>
 
     <string name="message_daily">See What\'s New</string>
-    <string name="message_release">New release movies today is </string>
+    <string name="message_release">New release movies</string>
     <string name="alarm_on">Alarm activated</string>
     <string name="alarm_off">Alarm not activated</string>
     <string name="alarm">Alarm</string>

@@ -25,10 +25,6 @@
 
         <activity android:name=".SetAlarmActivity" />
 
-        <receiver
-            android:name=".reminder.AlarmReceiver"
-            android:enabled="true"
-            android:exported="true" />
         <receiver android:name=".widget.FilmWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -38,6 +34,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/film_widget_info" />
         </receiver>
+        <receiver
+            android:name=".reminder.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true"/>
 
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".DetailActivity" />
